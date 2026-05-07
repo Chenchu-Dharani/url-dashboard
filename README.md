@@ -1,19 +1,21 @@
-# VBO Dashboard
+# URL Dashboard
 
 A simple Flask web dashboard to manage and navigate internal service URLs across multiple environments (Common, LAB, PROD).
 
 ## Features
 
-- 🌐 Grouped environments (Lab AWS, Lab ECX, Lab Cloud, Prod AWS, Prod Cilium, Prod Cloud, Prod Lite)
-- 🔍 Live search across all services
-- 📌 Pin frequently used services to the top
-- 🌙 Dark mode toggle
-- 📱 Responsive layout
+- Grouped environments (Lab AWS, Lab ECX, Lab Cloud, Prod AWS, Prod Cilium, Prod Cloud, Prod Lite)
+- Live search across all services
+- Pin frequently used services to the top
+- Dark mode toggle
+- Responsive layout
 
 ## Setup
 
 1. Clone the repo and create a virtual environment:
 ```bash
+git clone https://github.com/your-username/url-dashboard.git
+cd url-dashboard
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
@@ -36,6 +38,20 @@ python app.py
 
 5. Open your browser at: http://localhost:5000
 
+## Docker
+
+Build the image:
+```bash
+docker build -t url-dashboard .
+```
+
+Run the container:
+```bash
+docker run -p 5000:5000 url-dashboard
+```
+
+Open your browser at: http://localhost:5000
+
 ## Configuration
 
 Each service entry in the config files follows this structure:
@@ -54,9 +70,11 @@ Add your own logo images to `static/logos/` and reference them in the config.
 ## Project Structure
 
 ```
-vbo_dashboard/
+url-dashboard/
 ├── app.py                  # Flask app entry point
 ├── requirements.txt
+├── Dockerfile
+├── .dockerignore
 ├── config/
 │   ├── __init__.py
 │   ├── common.py
